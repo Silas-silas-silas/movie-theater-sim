@@ -1,40 +1,11 @@
 # movie-theater-sim
 cs 241 final
 # Movie Theater Simulator
-
-*A Java final project using ADTs, algorithms, and JUnit testing.*
-
----
-
-## **Project Overview**
-
-The Movie Theater Simulator is a Java-based command-line application that models a simplified movie theater ticketing process. It allows theater managers to simulate customer flow, ticket purchases, revenue generation, and transaction logging. The program demonstrates the use of multiple abstract data types and includes full JUnit testing.
-
----
-
-## **Team Members**
+## **Members**
 
 * **Michael:** Customer Queue (Queue ADT)
 * **Briana:** Movie Manager (HashMap ADT)
 * **Silas:** Transaction History (Stack ADT)
-
----
-
-## **Data Structures Used**
-
-### **Queue**
-
-Used to model customers waiting in line. Processes customers in FIFO order.
-
-### **HashMap**
-
-Stores movie information, ticket prices, tickets sold, and revenue per movie.
-
-### **Stack**
-
-Tracks transaction history. Supports undoing the most recent transaction and generating movie rankings.
-
----
 
 ## **Features**
 
