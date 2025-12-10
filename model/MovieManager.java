@@ -10,9 +10,9 @@ public class MovieManager {
         movies = new HashMap<>();
     }
 
-    /**
-     * Adds a movie with a title and ticket price.
-     */
+    
+     //Adds a movie with a title and ticket price.
+     
     public void addMovie(String title, double price) {
         if (title == null || title.isEmpty()) {
             throw new IllegalArgumentException("Movie title cannot be empty.");
@@ -24,9 +24,9 @@ public class MovieManager {
         movies.put(title, new Movie(title, price));
     }
 
-    /**
-     * Sells exactly one ticket for the given movie.
-     */
+    
+    //Sells exactly one ticket for the given movie.
+     
     public void sellTicket(String title) {
         Movie m = movies.get(title);
         if (m != null) {
@@ -36,17 +36,17 @@ public class MovieManager {
         }
     }
 
-    /**
-     * Gets total revenue of one movie.
-     */
+    
+     //Gets total revenue of one movie.
+    
     public double getRevenue(String title) {
         Movie m = movies.get(title);
         return (m == null) ? 0.0 : m.getRevenue();
     }
 
-    /**
-     * Returns the Movie object with the highest revenue.
-     */
+    
+     //Returns the Movie object with the highest revenue.
+    
     public Movie getMostProfitableMovie() {
         Movie most = null;
 
@@ -59,16 +59,15 @@ public class MovieManager {
         return most;
     }
 
-    /**
-     * Returns the HashMap for iteration or display.
-     */
+    
+     //Returns the HashMap for  display.
+     
     public HashMap<String, Movie> getAllMovies() {
         return movies;
     }
 
-    /**
-     * Calculates total revenue across all movies.
-     */
+    //Calculates total revenue across all movies.
+     
     public double getTotalRevenue() {
         double total = 0;
         for (Movie m : movies.values()) {
@@ -77,9 +76,9 @@ public class MovieManager {
         return total;
     }
 
-    /**
-     * Prints a formatted summary of all movie stats.
-     */
+    
+    //Prints a formatted summary of all movie stats.
+     
     public void printMovieReport() {
         System.out.println("\n=== Movie Sales Report ===");
         for (Movie m : movies.values()) {
