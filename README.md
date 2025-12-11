@@ -17,7 +17,7 @@ cs 241 final
 
 ### **Movie Management**
 
-* Stores three movies with customizable ticket prices.
+* Stores three movies with ticket prices.
 * Tracks ticket sales and calculates revenue.
 * Determines the most profitable movie.
 
