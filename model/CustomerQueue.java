@@ -61,6 +61,6 @@ public class CustomerQueue {
     }
 
     public int size() {
-        return size();
+        return size;
     }
 }
