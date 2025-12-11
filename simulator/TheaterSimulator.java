@@ -4,18 +4,18 @@ import model.Customer;
 import model.CustomerQueue;
 import model.Movie;
 import model.MovieManager;
-import model.TransactionHistory;
+import model.Transactions;
 
 public class TheaterSimulator {
 
     private CustomerQueue queue;
     private MovieManager movieManager;
-    private TransactionHistory history;
+    private Transactions history;
 
     public TheaterSimulator() {
         queue = new CustomerQueue();
         movieManager = new MovieManager();
-        history = new TransactionHistory();
+        history = new Transactions();
     }
 
     /**

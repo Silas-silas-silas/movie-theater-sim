@@ -3,19 +3,6 @@ import java.util.NoSuchElementException;
 
 public class CustomerQueue {
 
-    public class Customer {
-
-        private String movieChoice;
-
-        public Customer(String movieChoice) {
-            this.movieChoice = movieChoice;
-        }
-
-        public String getMovieChoice() {
-            return movieChoice;
-        }
-    }
-
     private Node front; // front of the queue
     private Node rear;  // rear of the queue
     private int size;
