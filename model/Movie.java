@@ -37,4 +37,3 @@ public class Movie {
         return title + " | $" + price + " | Tickets Sold: " + ticketsSold;
     }
 }
-
