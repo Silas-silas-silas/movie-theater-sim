@@ -6,72 +6,69 @@ import model.Movie;
 import model.MovieManager;
 import model.Transactions;
 
+import java.util.Scanner;
+
 public class TheaterSimulator {
 
     private CustomerQueue queue;
     private MovieManager movieManager;
-    private Transactions history;
+    private Transactions transactions;
 
     public TheaterSimulator() {
         queue = new CustomerQueue();
         movieManager = new MovieManager();
-        history = new Transactions();
+        transactions = new Transactions();
     }
 
-    /**
-     * Sets up movies and their ticket prices.
-     */
     public void setupMovies() {
         movieManager.addMovie("Action", 12.00);
         movieManager.addMovie("Romance", 10.00);
         movieManager.addMovie("Horror", 11.00);
     }
 
-    /**
-     * Creates a number of customers and randomly assigns them a movie choice.
-     */
-    public void addCustomers(int count) {
-        String[] movies = {"Action", "Romance", "Horror"};
+    public void addCustomersFromInput() {
+        Scanner scanner = new Scanner(System.in);
 
-        for (int i = 0; i < count; i++) {
-            int choiceIndex = (int)(Math.random() * movies.length);
-            queue.enqueue(new Customer(movies[choiceIndex]));
+        for (Movie m : movieManager.getAllMovies().values()) {
+            System.out.print("How many people are seeing " + m.getTitle() + "? ");
+            int count = scanner.nextInt();
+
+            for (int i = 0; i < count; i++) {
+                queue.enqueue(new Customer(m.getTitle()));
+            }
         }
     }
 
-    /**
-     * Processes the queue: each customer buys a ticket for their chosen movie.
-     */
     public void runSimulation() {
         while (!queue.isEmpty()) {
             Customer c = queue.dequeue();
-            String movieChoice = c.getMovieChoice();
+            String choice = c.getMovieChoice();
 
-            // Sell ticket with HashMap ADT
-            movieManager.sellTicket(movieChoice);
+            movieManager.sellTicket(choice);
+            double price = movieManager.getAllMovies().get(choice).getPrice();
 
-            // Record sale in Stack ADT
-            double price = movieManager.getAllMovies().get(movieChoice).getPrice();
-            history.pushTransaction(movieChoice, price);
+            transactions.logSale(choice, price);
         }
     }
 
-    /**
-     * Prints full results of the simulation.
-     */
     public void printResults() {
-        System.out.println("\n===== MOVIE THEATER SIMULATION RESULTS =====");
-
         movieManager.printMovieReport();
 
-        Movie best = movieManager.getMostProfitableMovie();
-        if (best != null) {
-            System.out.println("\nTop Movie: " + best.getTitle() +
-                    " ($" + best.getRevenue() + ")");
+        System.out.println("\n=== Revenue Report ===");
+        for (Movie m : movieManager.getAllMovies().values()) {
+            System.out.println(
+                m.getTitle() + " Revenue: $" +
+                transactions.getRevenueForMovie(m.getTitle())
+            );
         }
 
-        System.out.println("Total Transactions Logged: " + history.getTransactionCount());
-        System.out.println("=============================================\n");
+        System.out.println("TOTAL REVENUE: $" + transactions.getTotalRevenue());
+
+        Movie popular = movieManager.getMostPopularMovie();
+        if (popular != null) {
+            System.out.println("Most Popular Movie: " + popular.getTitle());
+        }
     }
 }
+
 

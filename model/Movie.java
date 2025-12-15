@@ -28,10 +28,6 @@ public class Movie {
         ticketsSold++;
     }
 
-    public double getRevenue() {
-        return ticketsSold * price;
-    }
-
     @Override
     public String toString() {
         return title + " | $" + price + " | Tickets Sold: " + ticketsSold;

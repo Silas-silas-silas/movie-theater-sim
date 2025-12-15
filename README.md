@@ -24,13 +24,11 @@ cs 241 final
 ### **Transaction Logging**
 
 * Every ticket sale creates a transaction entry.
-* Allows undoing the latest sale.
 * Generates a ranking of movies based on number of purchases.
 
 ### **Simulation Output**
 
 * Tickets sold per movie
 * Total revenue
-* Number of customers processed
 * Number of transactions
 * Movie ranking by popularity

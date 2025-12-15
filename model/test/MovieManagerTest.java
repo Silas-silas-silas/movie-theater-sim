@@ -47,37 +47,6 @@ public class MovieManagerTest {
                 "Selling a ticket for a missing movie should NOT create it.");
     }
 
-    @Test
-    void testRevenueCalculation() {
-        manager.sellTicket("Movie A");
-        manager.sellTicket("Movie A");
-
-        double revenue = manager.getRevenue("Movie A");
-
-        assertEquals(20.0, revenue,
-                "Revenue should equal ticketsSold * price (2 * 10).");
-    }
-
-    @Test
-    void testGetMostProfitableMovie() {
-        manager.sellTicket("Movie A");
-        manager.sellTicket("Movie A"); // 20 revenue
-        manager.sellTicket("Movie B"); // 12 revenue
-
-        Movie top = manager.getMostProfitableMovie();
-
-        assertEquals("Movie A", top.getTitle(),
-                "Movie A should be the highest revenue movie.");
-    }
-
-    @Test
-    void testTotalRevenue() {
-        manager.sellTicket("Movie A"); // 10
-        manager.sellTicket("Movie B"); // 12
-
-        assertEquals(22.0, manager.getTotalRevenue(),
-                "Total revenue should be sum of all movie revenues.");
-    }
 }
 
 

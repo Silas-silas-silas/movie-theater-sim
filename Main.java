@@ -6,9 +6,10 @@ public class Main {
         TheaterSimulator sim = new TheaterSimulator();
 
         sim.setupMovies();
-        sim.addCustomers(20);
+        sim.addCustomersFromInput();
         sim.runSimulation();
         sim.printResults();
     }
 }
+
 
