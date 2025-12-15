@@ -21,9 +21,9 @@ public class TheaterSimulator {
     }
 
     public void setupMovies() {
-        movieManager.addMovie("Action", 12.00);
-        movieManager.addMovie("Romance", 10.00);
-        movieManager.addMovie("Horror", 11.00);
+        movieManager.addMovie("A Allan Adventure", 12.00);
+        movieManager.addMovie("A Charlie the Chaplin", 10.00);
+        movieManager.addMovie("Burnout Revenge for the PS2: The Movie", 11.00);
     }
 
     public void addCustomersFromInput() {
