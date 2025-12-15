@@ -1,12 +1,11 @@
 package simulator;
 
+import java.util.Scanner;
 import model.Customer;
 import model.CustomerQueue;
 import model.Movie;
 import model.MovieManager;
 import model.Transactions;
-
-import java.util.Scanner;
 
 public class TheaterSimulator {
 
@@ -24,6 +23,8 @@ public class TheaterSimulator {
         movieManager.addMovie("A Allan Adventure", 12.00);
         movieManager.addMovie("A Charlie the Chaplin", 10.00);
         movieManager.addMovie("Burnout Revenge for the PS2: The Movie", 11.00);
+        movieManager.addMovie("The Minecraft Movie", 13.00);
+        movieManager.addMovie("Pim Pimpling Has a Pimple", 14.00);
     }
 
     public void addCustomersFromInput() {
