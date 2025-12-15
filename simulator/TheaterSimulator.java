@@ -38,6 +38,7 @@ public class TheaterSimulator {
                 queue.enqueue(new Customer(m.getTitle()));
             }
         }
+        scanner.close();
     }
 
     public void runSimulation() {
