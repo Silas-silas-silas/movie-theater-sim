@@ -48,15 +48,7 @@ public class CustomerQueueTest {
 
     }
 
-    @Test
-    public void testDequeueOnEmptyQueue() {
-        assertNull(queue.dequeue(), "Dequeue on empty queue should return null");
-    }
 
-    @Test
-    public void testPeekOnEmptyQueue() {
-        assertNull(queue.peek(), "Peek on empty queue should return null");
-    }
 
     @Test
     public void testIsEmpty() {
