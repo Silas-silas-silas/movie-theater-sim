@@ -1,57 +1,56 @@
-package model;
+package model.test;
 
-import java.util.Stack;
+import model.Transactions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TransactionsTest {
 
-    private static class Transaction {
-        private String movieName;
-        private double price;
+    private Transactions transactions;
 
-        public Transaction(String movieName, double price) {
-            this.movieName = movieName;
-            this.price = price;
-        }
-
-        public String getMovieName() {
-            return movieName;
-        }
-
-        public double getPrice() {
-            return price;
-        }
+    @BeforeEach
+    void setUp() {
+        transactions = new Transactions();
     }
 
-    private Stack<Transaction> history;
+    @Test
+    void testLogSaleAndCount() {
+        transactions.logSale("A Allan Adventure", 12.00);
+        transactions.logSale("A Charlie the Chaplin", 12.00);
+        transactions.logSale("Burnout Revenge for the PS2: The Movie", 12.00);
+        transactions.logSale("The Minecraft Movie", 12.00);
+        transactions.logSale("Pim Pimpling Has a Pimple", 12.00);
 
-    public TransactionsTest() {
-        history = new Stack<>();
+        assertEquals(5, transactions.getTransactionCount(),
+                "Should have 5 transactions logged");
     }
 
-    public void logSale(String movieName, double price) {
-        history.push(new Transaction(movieName, price));
+    @Test
+    void testTotalRevenue() {
+        transactions.logSale("A Allan Adventure", 12.00);
+        transactions.logSale("A Charlie the Chaplin", 12.00);
+        transactions.logSale("Burnout Revenge for the PS2: The Movie", 12.00);
+        transactions.logSale("The Minecraft Movie", 12.00);
+        transactions.logSale("Pim Pimpling Has a Pimple", 12.00);
+
+        assertEquals(60.0, transactions.getTotalRevenue(), 0.0001,
+                "Total revenue should sum all transactions");
     }
 
-    public double getTotalRevenue() {
-        double total = 0;
-        for (Transaction t : history) {
-            total += t.getPrice();
-        }
-        return total;
-    }
+    @Test
+    void testRevenueForMovie() {
+        transactions.logSale("A Allan Adventure", 12.00);
+        transactions.logSale("A Charlie the Chaplin", 12.00);
+        transactions.logSale("Burnout Revenge for the PS2: The Movie", 12.00);
+        transactions.logSale("The Minecraft Movie", 12.00);
+        transactions.logSale("Pim Pimpling Has a Pimple", 12.00);
 
-    public double getRevenueForMovie(String movieName) {
-        double total = 0;
-        for (Transaction t : history) {
-            if (t.getMovieName().equals(movieName)) {
-                total += t.getPrice();
-            }
-        }
-        return total;
-    }
-
-    public int getTransactionCount() {
-        return history.size();
+        assertEquals(12.0, transactions.getRevenueForMovie("A Allan Adventure"), 0.0001);
+        assertEquals(12.0, transactions.getRevenueForMovie("A Charlie the Chaplin"), 0.0001);
+        assertEquals(12.0, transactions.getRevenueForMovie("Burnout Revenge for the PS2: The Movie"), 0.0001);
+        assertEquals(12.0, transactions.getRevenueForMovie("The Minecraft Movie"), 0.0001);
+        assertEquals(12.0, transactions.getRevenueForMovie("Pim Pimpling Has a Pimple"), 0.0001);
     }
 }
-

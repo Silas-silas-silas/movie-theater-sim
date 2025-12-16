@@ -1,6 +1,5 @@
 package model;
 
-import java.util.HashMap;
 import java.util.Stack;
 
 public class Transactions {

@@ -21,10 +21,10 @@ public class TheaterSimulator {
 
     public void setupMovies() {
         movieManager.addMovie("A Allan Adventure", 12.00);
-        movieManager.addMovie("A Charlie the Chaplin", 10.00);
-        movieManager.addMovie("Burnout Revenge for the PS2: The Movie", 11.00);
-        movieManager.addMovie("The Minecraft Movie", 13.00);
-        movieManager.addMovie("Pim Pimpling Has a Pimple", 14.00);
+        movieManager.addMovie("A Charlie the Chaplin", 12.00);
+        movieManager.addMovie("Burnout Revenge for the PS2: The Movie", 12.00);
+        movieManager.addMovie("The Minecraft Movie", 12.00);
+        movieManager.addMovie("Pim Pimpling Has a Pimple", 12.00);
     }
 
     public void addCustomersFromInput() {
@@ -38,7 +38,7 @@ public class TheaterSimulator {
                 queue.enqueue(new Customer(m.getTitle()));
             }
         }
-        scanner.close();
+        // DO NOT close System.in scanner
     }
 
     public void runSimulation() {
@@ -46,10 +46,11 @@ public class TheaterSimulator {
             Customer c = queue.dequeue();
             String choice = c.getMovieChoice();
 
-            movieManager.sellTicket(choice);
-            double price = movieManager.getAllMovies().get(choice).getPrice();
-
-            transactions.logSale(choice, price);
+            Movie movie = movieManager.getAllMovies().get(choice);
+            if (movie != null) {
+                movieManager.sellTicket(choice);
+                transactions.logSale(choice, movie.getPrice());
+            }
         }
     }
 
@@ -72,5 +73,3 @@ public class TheaterSimulator {
         }
     }
 }
-
-
